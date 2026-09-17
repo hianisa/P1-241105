@@ -11,13 +11,25 @@ let treemove1 = 0
 let treemove2 = 0
 
 let car1 = 1
-let car2 = 350
-let car3 = 450
-let carspeed1 = 1
-let carspeed2 = 20
-let ca3speed3 = 30
+let car2 = 500
+let car3 = 1
+let car1speed = 6
+let cars2peed = 6
+let car3speed = 10
 
 
+
+let trafficlight = 0
+
+
+
+
+function keyPressed() {
+  if (keyCode == ENTER) {
+    trafficlight = (trafficlight + 1) % 3;
+    console.log(trafficlight)
+  }
+}
 
 function setup() {
   createCanvas(800, 600);
@@ -25,8 +37,7 @@ function setup() {
 
 function draw() {
   background(153, 219, 255);
-
-
+  
 noStroke()
 
 
@@ -57,7 +68,6 @@ fill("#ffd100");
 circle(sunx, 80, 90);
 
 sunx = sunx + 0.7;
-console.log(sunx);
 
 if (sunx > 900 ){
   sunx = 0;
@@ -79,20 +89,32 @@ rect(600, 280, 40, 100)
 rect(615, 350, 10, 80)
 
 //rood oranje en groen is de stoplicht
-fill("#ff0000")
+fill("#630000")
 circle(620, 300, 25)
 
-fill("#ff9000")
+fill("#914d00")
 circle(620, 330, 25)
 
-fill("#0eff00")
+fill("green")
 circle(620, 360, 25)
 
+if (trafficlight == 0) {
+  fill("#ff0000")
+  circle(620, 300, 25)
+}
+if (trafficlight == 2) {
+  fill("#ff8800")
+  circle(620, 330, 25)
+}
+if (trafficlight == 1){
+  fill("#21ff00")
+circle(620, 360, 25)
+}
 
 drawwolk(cloudx1,100);
 
 cloudx1 = cloudx1 - 0.6;
-console.log(cloudx1)
+
 
 if (cloudx1 < -100 ){
   cloudx1 = 900;
@@ -102,7 +124,7 @@ drawwolk(cloudx2,200);
 cloudx2 = cloudx2 - 0.8
 
 cloudx2 = cloudx2 - 0.8;
-console.log(cloudx2)
+
 
 if (cloudx2 < -100 ){
 cloudx2 = 900;
@@ -113,7 +135,6 @@ drawwolk(cloudx3,50);
 cloudx3 = cloudx3 - 0.5
 
 cloudx3 = cloudx3 - 0.5;
-console.log(cloudx3)
 
 if (cloudx3 < -100 ){
   cloudx3 = 900;
@@ -156,21 +177,31 @@ treemove2 = 0 + Math.sin(frameCount * 0.075) * 5
 
 drawcar ("#ffb5d2" ,car1,350);
 
-car1 = car1 + 1;
-console.log(car1);
+car1 = car1 + 6;
 
 if (car1 > 900 ) {
-  car1 = -50
+  car1 = -150
 }
 
 //auto rechts
-drawcar("#ff5cb5", 450, 350)
+drawcar("#ff5cb5", car2, 350);
 
+car2 = car2 + 6;
+
+if (car2 > 900 ) {
+  car2 = -150
+}
 
 
 
 //auto midden
-drawcar("#ff008b", 370, 450);  
+drawcar("#ff008b", car3, 450);  
+
+car3 = car3 + 10;
+
+if (car3 > 900 ){
+  car3 = -150
+}
 
 
 
