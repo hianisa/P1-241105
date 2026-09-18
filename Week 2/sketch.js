@@ -14,7 +14,7 @@ let car1 = 1
 let car2 = 500
 let car3 = 1
 let car1speed = 6
-let cars2peed = 6
+let car2speed = 6
 let car3speed = 10
 
 
@@ -174,10 +174,9 @@ treemove2 = 0 + Math.sin(frameCount * 0.075) * 5
 
 
 //linker auto
-
 drawcar ("#ffb5d2" ,car1,350);
 
-car1 = car1 + 6;
+car1 = car1 + car1speed;
 
 if (car1 > 900 ) {
   car1 = -150
@@ -186,7 +185,7 @@ if (car1 > 900 ) {
 //auto rechts
 drawcar("#ff5cb5", car2, 350);
 
-car2 = car2 + 6;
+car2 = car2 + car2speed;
 
 if (car2 > 900 ) {
   car2 = -150
@@ -197,11 +196,52 @@ if (car2 > 900 ) {
 //auto midden
 drawcar("#ff008b", car3, 450);  
 
-car3 = car3 + 10;
+car3 = car3 + car3speed;
 
 if (car3 > 900 ){
   car3 = -150
 }
+
+
+if (trafficlight == 0 && car1 >= 300 ){
+  car1speed = 0
+}
+
+if (trafficlight == 1 && car1 >= 0 ){
+  car1speed = 6
+}
+ if (trafficlight == 2 && car1 >= 0 ){
+  car1speed = 2
+ }
+
+
+ if (trafficlight == 0 && car2 >= 10 ){
+  car2speed = 0
+ }
+ if (trafficlight == 1 && car2 >= 0 ){
+  car2speed = 6
+ }
+ if (trafficlight == 2 && car2 >= 0){
+  car2speed = 2
+ }
+
+ if (trafficlight == 0 && car3 >= 500 ){
+  car3speed = 0
+ }
+
+ if (trafficlight == 1 && car3 >= 0 ){
+  car3speed = 10
+ }
+
+if (trafficlight == 2 && car3 >= 0 ){
+  car3speed = 4
+}
+
+
+
+
+
+
 
 
 
