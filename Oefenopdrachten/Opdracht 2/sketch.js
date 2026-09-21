@@ -16,5 +16,5 @@ function draw() {
 
   textKleur = textKleur + 1;
   text(textKleur, 20, 40);
-}
+} 
    

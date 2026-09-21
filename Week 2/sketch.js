@@ -208,7 +208,7 @@ if (trafficlight == 0 && car1 >= 300 ){
 }
 
 if (trafficlight == 1 && car1 >= 0 ){
-  car1speed = 6
+  car1speed = 6 
 }
  if (trafficlight == 2 && car1 >= 0 ){
   car1speed = 2
