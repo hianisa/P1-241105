@@ -1,4 +1,4 @@
-let vakken = ["", "", "", "", "", "", "", ""];
+let vakken = ["", "", "", "", "", "", "", "", ""];
 
 let speler = "pink";
 
@@ -20,13 +20,13 @@ function draw() {
 
     } else {
 
-      background("");
+      background("#fff7bd");
 
     }
 
   } else {
 
-    background(10);
+    background("#d6ffbd");
 
   }
  
@@ -76,7 +76,7 @@ function mousePressed() {
  
   if (plek >= 0 && plek < 9 && vakken[plek] == "") {
 
-    vakken[plek] = speler;
+    vakken[plek] = speler; 
  
     // Horizontaal
 
@@ -116,13 +116,13 @@ function mousePressed() {
 
         vakken[0] == vakken[4] &&
 
-        vakken[0] == vakken[8]) {
+        vakken[0] == vakken[9]) {
 
       winnaar = speler;
 
     }
  
-    if (vakken[2] != "" &&
+    if (vakken[2] !=  "" &&
 
         vakken[2] == vakken[4] &&
 
@@ -150,5 +150,11 @@ function mousePressed() {
 
   }
 
+}
+
+function keyPressed() {
+  if (keyCode === ENTER) {
+    vakken = ["", "", "", "", "", "", "", "", ""];
+}
 }
  
