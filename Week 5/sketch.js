@@ -116,7 +116,7 @@ function mousePressed() {
 
         vakken[0] == vakken[4] &&
 
-        vakken[0] == vakken[9]) {
+        vakken[0] == vakken[8]) {
 
       winnaar = speler;
 
@@ -154,7 +154,12 @@ function mousePressed() {
 
 function keyPressed() {
   if (keyCode === ENTER) {
-    vakken = ["", "", "", "", "", "", "", "", ""];
+    // vakken resetten
+    vakken = ["", "", "", "", "", "", "", "", ""]; 
+
+    // winnaar resetten
+    winnaar = "";
+  }
 }
-}
+
  

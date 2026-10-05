@@ -1,26 +1,165 @@
+let vakken = ["", "", "", "", "", "", "", "", ""];
+
+let speler = "pink";
+
+let winnaar = "";
+ 
 function setup() {
-  createCanvas(800, 600);
-}
 
-function draw(){
-  background(220);
-
-  fill("black")
-  rect(150, 55, 500, 500, 20)
-
-  fill("white")
-  rect(160, 70, 150, 150, 10)//links boven
-  rect(325, 70, 150, 150, 10)//midden boven
-  rect(490, 70, 150, 150, 10)//rechts boven
-
-  rect(160, 230, 150, 150, 10)//links midden
-  rect(325, 230, 150, 150, 10)//midden midden
-  rect(490, 230, 150, 150, 10)//rechts midden
-
-  rect(160, 390, 150, 150, 10)//links onder
-  rect(325, 390, 150, 150, 10)//links midden
-  rect(490, 390, 150, 150, 10)//rechts onder
-
-   
+  createCanvas(400, 400);
 
 }
+ 
+function draw() {
+
+  if (winnaar == "") {
+
+    if (speler == "#ff74b7") {
+
+      background("#fff7bd");
+
+    } else {
+
+      background("#fff7bd");
+
+    }
+
+  } else {
+
+    background("#d6ffbd");
+
+  }
+ 
+  fill(0);
+
+  textSize(20);
+
+  textAlign(CENTER);
+ 
+  if (winnaar != "") {
+
+    text("Speler " + winnaar + " heeft gewonnen!", 200, 30);
+
+  } else {
+
+    text("Beurt van: " + speler, 200, 30);
+
+  }
+ 
+  for (let i = 0; i < 9; i++) {
+
+    let x = 50 + (i % 3) * 100;
+
+    let y = 50 + floor(i / 3) * 100;
+ 
+    if (vakken[i] == "pink") fill("#ff74b7");
+
+    else if (vakken[i] == "cyan") fill("#aafff8");
+
+    else fill("white");
+ 
+    rect(x, y, 90, 90);
+
+  }
+
+}
+ 
+function mousePressed() {
+
+  if (winnaar != "") return;
+ 
+  let kolom = floor((mouseX - 50) / 100);
+
+  let rij = floor((mouseY - 50) / 100);
+
+  let plek = rij * 3 + kolom;
+ 
+  if (plek >= 0 && plek < 9 && vakken[plek] == "") {
+
+    vakken[plek] = speler; 
+ 
+    // Horizontaal
+
+    for (let i = 0; i < 9; i += 3) {
+
+      if (vakken[i] != "" &&
+
+          vakken[i] == vakken[i + 1] &&
+
+          vakken[i] == vakken[i + 2]) {
+
+        winnaar = speler;
+
+      }
+
+    }
+ 
+    // Verticaal
+
+    for (let i = 0; i < 3; i++) {
+
+      if (vakken[i] != "" &&
+
+          vakken[i] == vakken[i + 3] &&
+
+          vakken[i] == vakken[i + 6]) {
+
+        winnaar = speler;
+
+      }
+
+    }
+ 
+    // Diagonalen
+
+    if (vakken[0] != "" &&
+
+        vakken[0] == vakken[4] &&
+
+        vakken[0] == vakken[8]) {
+
+      winnaar = speler;
+
+    }
+ 
+    if (vakken[2] !=  "" &&
+
+        vakken[2] == vakken[4] &&
+
+        vakken[2] == vakken[6]) {
+
+      winnaar = speler;
+
+    }
+ 
+    // Beurt wisselen
+
+    if (winnaar == "") {
+
+      if (speler == "pink") {
+
+        speler = "cyan";
+
+      } else {
+
+        speler = "pink";
+
+      }
+
+    }
+
+  }
+
+}
+
+function keyPressed() {
+  if (keyCode === ENTER) {
+    // vakken resetten
+    vakken = ["", "", "", "", "", "", "", "", ""]; 
+
+    // winnaar resetten
+    winnaar = "";
+  }
+}
+
+ 
